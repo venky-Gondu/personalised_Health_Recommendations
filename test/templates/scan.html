@@ -1,0 +1,139 @@
+<<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/logo.png" type="image/x-icon">
+    <title>Scan Image</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Serif", serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url(https://media.licdn.com/dms/image/C561BAQEUlhbWBHo_LQ/company-background_10000/0/1600056620392/kaieo_healthcare_cover?e=2147483647&v=beta&t=Wfl5UzO6MpyUKmjGK4qNSmJWyLk0qYzZDUT8jV1G63Q);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%;
+            background-position: center;
+        }
+
+        h1 {
+            color: rgb(246, 241, 241);
+            text-align: center;
+            font-size: 2rem;
+            padding: 10px;
+        }
+
+        form {
+            color: white;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            max-width: 500px;
+            padding: 20px;
+            height: auto;
+            width: 100%;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.132);
+            backdrop-filter: blur(10px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        input[type=file] {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            display: block;
+            margin: auto;
+        }
+
+        button[type=submit] {
+            background-color: #1e90ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            margin-top: 20px;
+            display: block;
+            margin: 25px auto;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type=submit]:hover {
+            background-color: #1c86ee;
+        }
+
+        #preview {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 2%;
+        }
+
+        .result-container {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <h1>Personalized Health and Diet Guidance through Deep Learning-Based Age Estimation from Facial Images</h1>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <label for="fileInput">Upload Your Facial Image:</label>
+        <input type="file" name="file" id="fileInput" aria-label="File input for uploading facial image">
+        <img id="preview" src="#" alt="Image Preview" style="display:none;">
+        <button type="submit" value="Predict" id="submitButton" style="display:none;">Predict</button>
+        {% if recommendations %}
+            <h1>Recommendations</h1>
+            <ul>
+                {% for category, recommendation in recommendations.items() %}
+                    <li>
+                        <strong>{{ category }}:</strong> {{ recommendation }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </form>
+
+    {% include 'footer.html' %}
+
+    <script>
+        document.getElementById('fileInput').onchange = function (event) {
+            var preview = document.getElementById('preview');
+            var submitButton = document.getElementById('submitButton');
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                submitButton.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        };
+    </script>
+</body>
+
+</html>

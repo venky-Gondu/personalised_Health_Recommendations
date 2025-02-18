@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'navbar.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/logo.png" type="image/x-icon">
+    <title>Prediction Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Serif", serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url(https://media.licdn.com/dms/image/C561BAQEUlhbWBHo_LQ/company-background_10000/0/1600056620392/kaieo_healthcare_cover?e=2147483647&v=beta&t=Wfl5UzO6MpyUKmjGK4qNSmJWyLk0qYzZDUT8jV1G63Q);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100%;
+            background-position: center;
+        }
+
+        h1 {
+            color: rgb(246, 241, 241);
+            text-align: center;
+            font-size: 2rem;
+            padding: 10px;
+        }
+
+        .result-container {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.132);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+        }
+
+        .result-container img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 2%;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .image-container div {
+            margin: 10px;
+        }
+
+        .recommendations {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .recommendations h3 {
+            color: rgb(246, 241, 241);
+            margin-bottom: 10px;
+        }
+
+        .recommendations p {
+            color: rgb(255, 255, 255);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    <div class="result-container">
+        {% if prediction %}
+            <h2>{{ prediction }}</h2>
+            <h3>Confidence: {{ prediction_percentage }}%</h3>
+            <div class="image-container">
+                <div>
+                    <h4>Original Image:</h4>
+                    <img src="{{ image_url }}" alt="Uploaded Image">
+                </div>
+                <div>
+                    <h4>Result Image:</h4>
+                    <img src="{{ result_image_url }}" alt="Result Image">
+                </div>
+            </div>
+        {% else %}
+            <h2>No Prediction Available</h2>
+        {% endif %}
+
+        {% if recommendations %}
+            <div class="recommendations">
+                <h3>Food Recommendations:</h3>
+                <p>{{ recommendations['Food Recommendations'] }}</p>
+
+                <h3>Exercise Recommendations:</h3>
+                <p>{{ recommendations['Exercise Recommendations'] }}</p>
+
+                <h3>Books Recommendations:</h3>
+                <p>{{ recommendations['Books Recommendations'] }}</p>
+
+                <h3>Music Recommendations:</h3>
+                <p>{{ recommendations['Music Recommendations'] }}</p>
+            </div>
+        {% endif %}
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
+
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/static/logo.png" type="image/x-icon" />
+    <title>Personalized Health and Diet Guidance</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Noto Serif", serif;
+      }
+      
+      body {
+        background-image: url(https://media.licdn.com/dms/image/C561BAQEUlhbWBHo_LQ/company-background_10000/0/1600056620392/kaieo_healthcare_cover?e=2147483647&v=beta&t=Wfl5UzO6MpyUKmjGK4qNSmJWyLk0qYzZDUT8jV1G63Q);
+      
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
+        background-position: center;
+      }
+      
+      h1 {
+        color: aliceblue;
+        text-align: center;
+        font-size: 2rem;
+        padding: 10px;
+      }
+      
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        max-width: 90%;
+        padding: 20px;
+      }
+      
+      .card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* background-color: rgba(255, 255, 255, 0.9); */
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 100%;
+        margin-bottom: 30px;
+        margin-left: 70%;
+        max-width: 100%;
+        transition: transform 0.3s, box-shadow 0.3s;
+      
+        /* height: 250px; */
+        /* width: 250px; */
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.132);
+        backdrop-filter: blur(10px);
+      }
+      
+      .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      
+      .circle-image {
+        border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+      
+      .card.right .circle-image {
+        margin-right: 0;
+        margin-left: 20px;
+      }
+      
+      .text-content {
+        flex-grow: 1;
+      }
+      
+      .text-content h2 {
+        margin: 0;
+        margin-bottom: 10px;
+        color: aliceblue;
+        transition: color 0.3s;
+      }
+      
+      .precautions-list {
+        padding-left: 20px;
+        color: aliceblue;
+        /* Adjust as needed */
+      }
+      
+      .text-content p {
+        margin: 0;
+        color: aliceblue;
+        transition: color 0.3s;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+
+    <h1>About Us</h1>
+    <div class="container">
+      <div class="card left">
+        <img src="{{ url_for('static', filename='Health.jpg') }}" alt="Cat image" class="circle-image" />
+        <div class="text-content">
+          <h2>Personalized Health Insights</h2>
+          <p>Using advanced deep learning techniques, our system analyzes facial images to estimate your age and provide tailored health and diet recommendations. This personalized approach ensures that the guidance you receive is specific to your unique needs and characteristics.</p>
+        </div>
+      </div>
+      <div class="card right">
+        <div class="text-content">
+          <h2>Age Estimation Technology</h2>
+          <p>Our convolutional neural network (CNN) model accurately estimates your age based on facial features. This technology forms the foundation of our personalized guidance, allowing us to offer recommendations that are relevant and effective for your age group.</p>
+        </div>
+        <img src="{{ url_for('static', filename='Age.jpg') }}" alt="Cat image" class="circle-image" />
+      </div>
+      <div class="card left">
+        <img src="{{ url_for('static', filename='custom.jpg') }}" alt="Cat image" class="circle-image" />
+        <div class="text-content">
+          <h2>Customized Diet Plans</h2>
+          <p>Based on your estimated age, our system suggests diet plans that cater to your nutritional needs. These plans are designed to promote overall well-being and support a healthy lifestyle, ensuring you get the right balance of vitamins, minerals, and other essential nutrients.</p>
+        </div>
+      </div>
+      <div class="card right">
+        <div class="text-content">
+          <h2>Health Recommendations for Ages</h2>
+          <ul class="precautions-list">
+            <li><b>Young Adult Males (20-30 years):</b> Consume protein-rich foods like eggs, lean meats, and legumes to support energy needs and muscle growth.</li>
+            <li><b>Middle-Aged Females (40-50 years):</b> Include calcium-rich foods such as dairy products, leafy greens, and fortified cereals to maintain bone health.</li>
+            <li><b>Older Adults (60+ years, Any Gender):</b> Prioritize fiber-rich foods like fruits, vegetables, and whole grains to support digestive health.</li>
+            <li><b>Hydration for All Ages:</b> Stay hydrated throughout the day, as hydration is crucial for maintaining overall health.
+            </li>
+            <li><b>Adjustments Based on Activity Level:</b> Tailor meal timing and portion sizes to match your exercise level and health goals.</li>
+          </ul>
+        </div>
+        <img src="{{ url_for('static', filename='guide.jpg') }}" alt="Cat image" class="circle-image" />
+      </div>
+      <div class="card left">
+        <img src="{{ url_for('static', filename='food.jpg') }}" alt="Cat image" class="circle-image" />
+        <div class="text-content">
+          <h2>Benefits of Personalized Guidance</h2>
+          <ul class="precautions-list">
+            <li>
+              <b>Age-Specific Recommendations:</b> Receive health and diet tips that are tailored to your age.
+            </li>
+            <li>
+              <b>Improved Health Outcomes:</b>Follow a diet plan that supports your body's specific requirements.
+            </li>
+            <li>
+              <b>Enhanced Well-Being:</b> Enjoy the benefits of a balanced diet and personalized health advice.
+            </li>
+            <li>
+              <b>Ongoing Support:</b> Access continuous updates and recommendations to maintain optimal health.
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    {% include 'footer.html' %}
+  </body>
+</html>
