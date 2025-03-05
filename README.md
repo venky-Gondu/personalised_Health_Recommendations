@@ -87,9 +87,9 @@ Contributions are welcome! If you find any issues or have suggestions, feel free
 ## 📩 Contact
 For any queries or collaborations, reach out to:
 - **Name:** Gondu Venkatesh
-- **Email:** your.email@example.com
-- **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- **GitHub:** [Your GitHub Profile](https://github.com/yourusername)
+- **Email:** venkatesh.gondu108@gmail.com
+- **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/venkateshgondu)
+- **GitHub:** [Your GitHub Profile](https://github.com/venky-gondu)
 
 ---
 
